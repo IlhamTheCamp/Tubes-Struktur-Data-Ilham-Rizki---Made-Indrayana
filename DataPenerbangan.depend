@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1555832466 source:d:\kuliah\semester 2\struktur data\tubes\datapenerbangan\main.cpp
+	<iostream>
+	"flight.h"
+
+1555838776 d:\kuliah\semester 2\struktur data\tubes\datapenerbangan\flight.h
+	<iostream>
+	<stdlib.h>
+
+1555832495 source:d:\kuliah\semester 2\struktur data\tubes\datapenerbangan\flight.cpp
+	"flight.h"
+
