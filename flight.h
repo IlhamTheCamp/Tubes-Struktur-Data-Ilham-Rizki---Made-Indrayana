@@ -16,8 +16,8 @@ void printChild (ListChild L);
 void connect (ListParent &P, ListChild C);
 void checkConnection (ListParent P, ListChild C); // not sure
 void disconnect (ListParent &P, ListChild C);
-void printAll (List Parent P, List Child C);
-void printChildOfParent (List Parent P, List Child C);
+void printAll (ListParent P, ListChild C);
+void printChildOfParent (ListParent P, ListChild C);
 void deleteChild (ListParent &P, ListChild &C);
 void deleteParent (ListParent $L);
 

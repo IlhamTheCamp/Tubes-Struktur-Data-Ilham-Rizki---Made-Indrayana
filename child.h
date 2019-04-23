@@ -31,11 +31,11 @@ void createListCh (ListChild &L);
 adrChild allocateCh (string maskapai, string IDChild);
 void deallocateCh (adrChild &C);
 void insertFirstCh (ListChild &L, adrChild C);
-void insertAfterCh (ListChild &L, adrChild C);
+void insertAfterCh (ListChild &L, adrChild Prec, adrChild C);
 void insertLastCh (ListChild &L, adrChild C);
 void deleteFirstCh (ListChild &L, adrChild &C);
-void deleteAfterCh (ListChild &L, adrChild &C);
+void deleteAfterCh (ListChild &L, adrChild &Prec, adrChild C);
 void deleteLastCh (ListChild &L, adrChild &C);
-adrChild searchChild (ListChild L, string ID);
+adrChild searchChild (ListChild L, string IDC);
 
 #endif // CHILD_H_INCLUDED
