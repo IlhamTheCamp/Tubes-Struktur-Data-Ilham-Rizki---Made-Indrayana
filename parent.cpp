@@ -21,3 +21,38 @@ void deallocatePar (adrParent &P)
 {
     delete P;
 }
+
+void insertFirstPar (ListParent &L, adrParent P)
+{
+
+}
+
+void insertAfterPar (ListParent &L, adrParent P)
+{
+
+}
+
+void insertLastPar (ListParent &L, adrParent P)
+{
+
+}
+
+void deleteFirstPar (ListParent &L, adrParent &P)
+{
+
+}
+
+void deleteAfterPar (ListParent &L, adrParent &P)
+{
+
+}
+
+void deleteLastPar (ListParent &L, adrParent &P)
+{
+
+}
+
+adrParent searchParent (ListParent L, string ID)
+{
+
+}
