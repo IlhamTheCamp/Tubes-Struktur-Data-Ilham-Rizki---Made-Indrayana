@@ -32,9 +32,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="child.cpp" />
+		<Unit filename="child.h" />
 		<Unit filename="flight.cpp" />
 		<Unit filename="flight.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="parent.cpp" />
+		<Unit filename="parent.h" />
+		<Unit filename="relation.cpp" />
+		<Unit filename="relation.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
