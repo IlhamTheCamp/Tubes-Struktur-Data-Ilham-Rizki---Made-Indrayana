@@ -35,11 +35,11 @@ void createListPar (ListParent &L);
 adrParent allocatePar (string tujuan, string IDParent);
 void deallocatePar (adrParent &P);
 void insertFirstPar (ListParent &L, adrParent P);
-void insertAfterPar (ListParent &L, adrParent P);
+void insertAfterPar (ListParent &L, adrParent Prec, adrParent P);
 void insertLastPar (ListParent &L, adrParent P);
 void deleteFirstPar (ListParent &L, adrParent &P);
-void deleteAfterPar (ListParent &L, adrParent &P);
+void deleteAfterPar (ListParent &L, adrParent Prec, adrParent &P);
 void deleteLastPar (ListParent &L, adrParent &P);
-adrParent searchParent (ListParent L, string ID);
+adrParent searchParent (ListParent L, string IDP);
 
 #endif // PARENT_H_INCLUDED

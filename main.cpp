@@ -22,6 +22,7 @@ int main()
     adrChild C;
     deleteFirstCh(L1,C);
     deleteLastCh(L1,C);
+    Prec = firstChild(L1);
     deleteAfterCh(L1, Prec, C);
     printChild(L1);
     return 0;

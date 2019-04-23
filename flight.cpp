@@ -10,6 +10,8 @@ void printChild(ListChild L)
             cout << maskapai(C) << " - ";
             C = nextChild(C);
         }
-        cout << endl;
+        cout << "done" << endl;
+    } else {
+        cout << "nope" << endl;
     }
 }

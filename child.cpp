@@ -16,9 +16,9 @@ adrChild allocateCh (string maskapai, string IDChild)
     return C;
 }
 
-void deallocateChild (adrChild &P)
+void deallocateCh (adrChild &C)
 {
-    delete P;
+    delete C;
 }
 
 void insertFirstCh (ListChild &L, adrChild C)
@@ -38,10 +38,16 @@ void insertFirstCh (ListChild &L, adrChild C)
 
 void insertAfterCh (ListChild &L, adrChild Prec, adrChild C)
 {
-    nextChild(C) = nextChild(Prec);
-    prevChild(C) = Prec;
-    prevChild(nextChild(Prec)) = C;
-    nextChild(Prec) = C;
+    if ((Prec!=NULL)&&(C!=NULL)) {
+        if (nextChild(Prec)!=NULL) {
+            nextChild(C) = nextChild(Prec);
+            prevChild(C) = Prec;
+            prevChild(nextChild(Prec)) = C;
+            nextChild(Prec) = C;
+        } else {
+            insertLastCh(L, C);
+        }
+    }
 }
 
 void insertLastCh (ListChild &L, adrChild C)
@@ -54,39 +60,53 @@ void insertLastCh (ListChild &L, adrChild C)
     }
     else
     {
-        insertFirstCh(L,C);
+        firstChild(L) = C;
+        lastChild(L) = C;
     }
 }
 
 void deleteFirstCh (ListChild &L, adrChild &C)
 {
-    C = firstChild(L);
-    firstChild(L) = nextChild(firstChild(L));
-    prevChild(C) = NULL;
-    prevChild(firstChild(L)) = NULL;
-    nextChild(C) = NULL;
+    if (firstChild(L)!=NULL) {
+        C = firstChild(L);
+        if (firstChild(L) == lastChild(L)) {
+            firstChild(L) = NULL;
+            lastChild(L) = NULL;
+        } else {
+            firstChild(L) = nextChild(C);
+            prevChild(firstChild(L)) = NULL;
+            nextChild(C) = NULL;
+        }
+    }
 }
 
 void deleteAfterCh (ListChild &L, adrChild &Prec, adrChild C)
 {
-    C = nextChild(Prec);
-    nextChild(Prec) = nextChild(C);
-    prevChild(nextChild(C)) = Prec;
-    prevChild(C) = NULL;
-    nextChild(C) = NULL;
+    if (Prec!=NULL) {
+        C = nextChild(Prec);
+        if (nextChild(C) != NULL) {
+            nextChild(Prec) = nextChild(C);
+            prevChild(nextChild(C)) = Prec;
+            prevChild(C) = NULL;
+            nextChild(C) = NULL;
+        } else {
+            deleteLastCh(L, C);
+        }
+    }
 }
 
 void deleteLastCh (ListChild &L, adrChild &C)
 {
-    if (firstChild(L) == lastChild(L))
-    {
-        deleteFirstCh(L,C);
-    }
-    else
-    {
-        lastChild(L) = prevChild(lastChild(L));
-        prevChild(C) = NULL;
-        nextChild(lastChild(L)) = NULL;
+    if (lastChild(L)!=NULL) {
+        C = lastChild(L);
+        if (firstChild(L) == lastChild(L)) {
+            firstChild(L) = NULL;
+            lastChild(L) = NULL;
+        } else {
+            lastChild(L) = prevChild(C);
+            nextChild(lastChild(L)) = NULL;
+            prevChild(C) = NULL;
+        }
     }
 }
 

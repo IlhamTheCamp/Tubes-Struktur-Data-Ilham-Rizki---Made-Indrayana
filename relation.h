@@ -26,7 +26,7 @@ struct ListRelation{
 void createListRel (ListRelation &L);
 adrRelation allocateRel (adrChild C);
 void deallocateRel (adrRelation R);
-void insertRel (ListRelation &L, adrRelation P);
-void deleteRel (ListRelation &L, adrRelation &P);
+void insertRel (ListRelation &L, adrRelation R);
+void deleteRel (ListRelation &L, adrRelation &R);
 
 #endif // RELATION_H_INCLUDED
