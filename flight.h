@@ -3,56 +3,22 @@
 
 #include <iostream>
 #include <stdlib.h>
-#define tujuan(P) P->tujuan
-#define IDParent(P) P->IDParent
-#define nextParent(P) P->nextParent
-#define maskapai(C) C->maskapai
-#define IDChild(C) C->IDChild
-#define nextChild(C) C->nextChild
-#define nextRelation(V) V->nextRelation
-#define firstParent(L) L.firstParent
-#define firstChild(L) L.firstChild
-#define firstRelation(L) L.firstRelation
+#include "parent.h"
+#include "child.h"
+#include "relation.h"
 
 using namespace std;
-typedef struct elmParent *adrParent;
-typedef struct elmChild *adrChild;
-typedef struct elmRelation *adrRelation;
 
-struct elmParent{
-    string tujuan;
-    string IDParent;
-    adrParent nextParent;
-};
+void insertParent (ListParent &L);
+void printParent (ListParent L);
+void insertChild (ListParent &L);
+void printChild (ListChild L);
+void connect (ListParent &P, ListChild C);
+void checkConnection (ListParent P, ListChild C); // not sure
+void disconnect (ListParent &P, ListChild C);
+void printAll (List Parent P, List Child C);
+void printChildOfParent (List Parent P, List Child C);
+void deleteChild (ListParent &P, ListChild &C);
+void deleteParent (ListParent $L);
 
-struct ListParent{
-    adrParent firstParent;
-};
-
-struct elmChild{
-    string maskapai;
-    string IDChild;
-    adrChild nextChild;
-};
-
-struct ListChild{
-    adrChild firstChild;
-};
-
-struct elmRelation{
-    adrChild nextChild;
-    adrRelation nextRelation;
-};
-
-struct ListRelation{
-    adrRelation firstRelation;
-};
-
-void createListParent (ListParent &L);
-void createListChild (ListChild &L);
-void createListRelation (ListRelation &L);
-adrParent allocateParent (string tujuan, string IDParent);
-adrChild allocateChild (string maskapai, string IDChild);
-void deallocateParent (adrParent &P);
-void deallocateChild (adrChild &P);
 #endif // FLIGHT_H_INCLUDED
