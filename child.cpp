@@ -129,7 +129,7 @@ void deleteLastCh (ListChild &L, adrChild &C)
 adrChild searchChild (ListChild L, string IDC)
 {
     adrChild C = firstChild(L);
-    while (IDC != IDChild(C) && C != NULL)
+    while (C != NULL && IDC != IDChild(C) )
     {
         C = nextChild(C);
     }

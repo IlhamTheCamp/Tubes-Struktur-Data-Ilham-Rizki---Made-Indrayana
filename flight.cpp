@@ -36,62 +36,82 @@ void printChild(ListChild L)
     }
 }
 
-    void connect (ListParent &P, ListChild C, string IDP, string IDC)
+void connect (ListParent &P, ListChild C, string IDP, string IDC)
+{
+    adrParent Par = searchParent(P, IDP);
+    adrChild Chi = searchChild(C, IDC);
+    if (Par!=NULL && Chi!=NULL)
     {
-        adrParent Par = searchParent(P, IDP);
-        adrChild Chi = searchChild(C, IDC);
-        if (Par!=NULL && Chi!=NULL)
-        {
-            adrRelation R = allocateRel(Chi);
-            insertRel(childList(Par), R);
-        }
+        adrRelation R = allocateRel(Chi);
+        insertRel(childList(Par), R);
     }
+}
 
-    adrRelation checkConnection (ListParent P, ListChild C, string IDP, string IDC)
+adrRelation checkConnection (ListParent P, ListChild C, string IDP, string IDC)
+{
+    adrParent Par = searchParent(P, IDP);
+    adrChild Chi = searchChild(C, IDC);
+    if (Par!=NULL && Chi!=NULL)
     {
-        adrParent Par = searchParent(P, IDP);
-        adrChild Chi = searchChild(C, IDC);
-        if (Par!=NULL && Chi!=NULL)
+        adrRelation R = firstRelation(childList(Par));
+        while (R!=NULL)
         {
-            adrRelation R = firstRelation(childList(Par));
-            while (R!=NULL)
+            if (Chi == child(R))
             {
-                if (Chi == child(R))
-                {
-                    return R;
-                }
-                R = nextRelation(R);
+                return R;
             }
+            R = nextRelation(R);
         }
-        return NULL;
     }
+    return NULL;
+}
 
-    void disconnect (ListParent &P, ListChild C, string IDP, string IDC)
+void disconnect (ListParent &P, ListChild C, string IDP, string IDC)
+{
+    adrParent Par = searchParent(P, IDP);
+    adrChild Chi = searchChild(C, IDC);
+    if (Par!=NULL && Chi!=NULL)
     {
-        adrParent Par = searchParent(P, IDP);
-        adrChild Chi = searchChild(C, IDC);
-        if (Par!=NULL && Chi!=NULL)
+        adrRelation R = firstRelation(childList(Par));;
+        if (child(R) == Chi)
         {
-            adrRelation R = firstRelation(childList(Par));;
-            if (child(R) == Chi)
+            deleteFirstRel(childList(Par), R);
+            deallocateRel(R);
+        }
+        else
+        {
+            adrRelation S = R;
+            while (S!=NULL&&child(nextRelation(S))!=Chi)
             {
-                deleteFirstRel(childList(Par), R);
-                deallocateRel(R);
+                S = nextRelation(S);
             }
-            else
-            {
-                adrRelation S = R;
-                while (S!=NULL&&child(nextRelation(S))!=Chi)
-                {
-                    S = nextRelation(S);
-                }
-                deleteAfterRel(childList(Par), S, R);
-                deallocateRel(R);
-            }
+            deleteAfterRel(childList(Par), S, R);
+            deallocateRel(R);
         }
     }
+}
 
 void printAll (ListParent P, ListChild C)
 {
-
+    adrParent Q = firstParent(P);
+    adrRelation R;
+    while (Q!=NULL)
+    {
+        cout << tujuan(Q) << " :" << endl;
+        R = firstRelation(childList(Q));
+        if (R==NULL)
+        {
+            cout << " [Empty]" << endl;
+        }
+        else
+        {
+            while (R!=NULL)
+            {
+                cout << " -> " << maskapai(child(R)) << endl;
+                R = nextRelation(R);
+            }
+        }
+        Q = nextParent(Q);
+    }
+    cout << endl;
 }

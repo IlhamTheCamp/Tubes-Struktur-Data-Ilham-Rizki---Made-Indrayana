@@ -37,10 +37,19 @@ int main()
     adrParent PrecP = searchParent(L2,"22");
     deleteAfterPar(L2,PrecP,P);
     printParent(L2);*/
-    P = searchParent(L2,"45");
-    C = searchChild(L1,"9");
-    adrRelation R = allocateRel(C);
-    insertRel(child(P), R);
+    connect(L2, L1, "22", "77");
+    connect(L2, L1, "100", "77");
+    connect(L2, L1, "100", "9");
+    connect(L2, L1, "99", "3");
+    connect(L2, L1, "45", "3");
+    connect(L2, L1, "99", "77");
+    connect(L2, L1, "99", "88");
+    connect(L2, L1, "1", "1");      //Error Testing
+    connect(L2, L1, "100", "1");    //Error Testing
+    connect(L2, L1, "1", "9");      //Error Testing
+    printAll(L2, L1);
+    disconnect(L2, L1, "99", "77");
+    printAll(L2, L1);
     /// :o
     return 0;
 }

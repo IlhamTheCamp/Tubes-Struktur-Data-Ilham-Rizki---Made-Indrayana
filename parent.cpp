@@ -131,7 +131,7 @@ void deleteLastPar (ListParent &L, adrParent &P)
 adrParent searchParent (ListParent L, string IDP)
 {
     adrParent P = firstParent(L);
-    while (IDP != IDParent(P) && P != NULL)
+    while (P != NULL && IDP != IDParent(P))
     {
         P = nextParent(P);
     }
