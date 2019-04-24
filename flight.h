@@ -13,9 +13,9 @@ void insertParent (ListParent &L);
 void printParent (ListParent L);
 void insertChild (ListParent &L);
 void printChild (ListChild L);
-void connect (ListParent &P, ListChild C);
-void checkConnection (ListParent P, ListChild C); // not sure
-void disconnect (ListParent &P, ListChild C);
+void connect (ListParent &P, ListChild C, string IDP, string IDC);
+adrRelation checkConnection (ListParent P, ListChild C, string IDP, string IDC); // not sure
+void disconnect (ListParent &P, ListChild C, string IDP, string IDC);
 void printAll (ListParent P, ListChild C);
 void printChildOfParent (ListParent P, ListChild C);
 void deleteChild (ListParent &P, ListChild &C);

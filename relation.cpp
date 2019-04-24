@@ -25,7 +25,17 @@ void insertRel (ListRelation &L, adrRelation R)
     firstRelation(L) = R;
 }
 
-void deleteRel (ListRelation &L, adrRelation &R)
+void deleteFirstRel (ListRelation &L, adrRelation &R)
 {
-    /// i just realized this is complicated
+    R = firstRelation(L);
+    firstRelation(L) = nextRelation(R);
+    nextRelation(R) = NULL;
+}
+
+void deleteAfterRel (ListRelation &L, adrRelation Prec, adrRelation &R){
+    if (Prec!=NULL && nextRelation(Prec)!=NULL) {
+        R = nextRelation(Prec);
+        nextRelation(Prec) = nextRelation(R);
+        nextRelation(R) = NULL;
+    }
 }

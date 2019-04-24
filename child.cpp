@@ -38,13 +38,17 @@ void insertFirstCh (ListChild &L, adrChild C)
 
 void insertAfterCh (ListChild &L, adrChild Prec, adrChild C)
 {
-    if ((Prec!=NULL)&&(C!=NULL)) {
-        if (nextChild(Prec)!=NULL) {
+    if ((Prec!=NULL)&&(C!=NULL))
+    {
+        if (nextChild(Prec)!=NULL)
+        {
             nextChild(C) = nextChild(Prec);
             prevChild(C) = Prec;
             prevChild(nextChild(Prec)) = C;
             nextChild(Prec) = C;
-        } else {
+        }
+        else
+        {
             insertLastCh(L, C);
         }
     }
@@ -67,12 +71,16 @@ void insertLastCh (ListChild &L, adrChild C)
 
 void deleteFirstCh (ListChild &L, adrChild &C)
 {
-    if (firstChild(L)!=NULL) {
+    if (firstChild(L)!=NULL)
+    {
         C = firstChild(L);
-        if (firstChild(L) == lastChild(L)) {
+        if (firstChild(L) == lastChild(L))
+        {
             firstChild(L) = NULL;
             lastChild(L) = NULL;
-        } else {
+        }
+        else
+        {
             firstChild(L) = nextChild(C);
             prevChild(firstChild(L)) = NULL;
             nextChild(C) = NULL;
@@ -82,14 +90,18 @@ void deleteFirstCh (ListChild &L, adrChild &C)
 
 void deleteAfterCh (ListChild &L, adrChild &Prec, adrChild C)
 {
-    if (Prec!=NULL) {
+    if (Prec!=NULL)
+    {
         C = nextChild(Prec);
-        if (nextChild(C) != NULL) {
+        if (nextChild(C) != NULL)
+        {
             nextChild(Prec) = nextChild(C);
             prevChild(nextChild(C)) = Prec;
             prevChild(C) = NULL;
             nextChild(C) = NULL;
-        } else {
+        }
+        else
+        {
             deleteLastCh(L, C);
         }
     }
@@ -97,12 +109,16 @@ void deleteAfterCh (ListChild &L, adrChild &Prec, adrChild C)
 
 void deleteLastCh (ListChild &L, adrChild &C)
 {
-    if (lastChild(L)!=NULL) {
+    if (lastChild(L)!=NULL)
+    {
         C = lastChild(L);
-        if (firstChild(L) == lastChild(L)) {
+        if (firstChild(L) == lastChild(L))
+        {
             firstChild(L) = NULL;
             lastChild(L) = NULL;
-        } else {
+        }
+        else
+        {
             lastChild(L) = prevChild(C);
             nextChild(lastChild(L)) = NULL;
             prevChild(C) = NULL;

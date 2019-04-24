@@ -8,7 +8,7 @@
 
 #define child(R) R->child
 #define nextRelation(R) R->nextRelation
-#define firstRelation(R) R.firstRelation
+#define firstRelation(L) L.firstRelation
 
 using namespace std;
 
@@ -27,6 +27,7 @@ void createListRel (ListRelation &L);
 adrRelation allocateRel (adrChild C);
 void deallocateRel (adrRelation R);
 void insertRel (ListRelation &L, adrRelation R);
-void deleteRel (ListRelation &L, adrRelation &R);
+void deleteFirstRel (ListRelation &L, adrRelation &R);
+void deleteAfterRel (ListRelation &L, adrRelation Prec, adrRelation &R);
 
 #endif // RELATION_H_INCLUDED

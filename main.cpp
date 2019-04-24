@@ -37,5 +37,6 @@ int main()
     adrParent PrecP = searchParent(L2,"22");
     deleteAfterPar(L2,PrecP,P);
     printParent(L2);
+    /// :o
     return 0;
 }
