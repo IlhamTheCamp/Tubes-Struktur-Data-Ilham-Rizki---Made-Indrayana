@@ -14,12 +14,14 @@ using namespace std;
 
 typedef struct elmRelation *adrRelation;
 
-struct elmRelation{
+struct elmRelation
+{
     adrChild child;
     adrRelation nextRelation;
 };
 
-struct ListRelation{
+struct ListRelation
+{
     adrRelation firstRelation;
 };
 

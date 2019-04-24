@@ -40,13 +40,17 @@ void insertFirstPar (ListParent &L, adrParent P)
 
 void insertAfterPar (ListParent &L, adrParent Prec, adrParent P)
 {
-    if ((Prec!=NULL)&&(P!=NULL)) {
-        if (nextParent(Prec)!=NULL) {
+    if ((Prec!=NULL)&&(P!=NULL))
+    {
+        if (nextParent(Prec)!=NULL)
+        {
             nextParent(P) = nextParent(Prec);
             prevParent(P) = Prec;
             prevParent(nextParent(Prec)) = P;
             nextParent(Prec) = P;
-        } else {
+        }
+        else
+        {
             insertLastPar(L, P);
         }
     }
@@ -69,12 +73,16 @@ void insertLastPar (ListParent &L, adrParent P)
 
 void deleteFirstPar (ListParent &L, adrParent &P)
 {
-    if (firstParent(L)!=NULL) {
+    if (firstParent(L)!=NULL)
+    {
         P = firstParent(L);
-        if (firstParent(L) == lastParent(L)) {
+        if (firstParent(L) == lastParent(L))
+        {
             firstParent(L) = NULL;
             lastParent(L) = NULL;
-        } else {
+        }
+        else
+        {
             firstParent(L) = nextParent(P);
             prevParent(firstParent(L)) = NULL;
             nextParent(P) = NULL;
@@ -84,14 +92,18 @@ void deleteFirstPar (ListParent &L, adrParent &P)
 
 void deleteAfterPar (ListParent &L, adrParent Prec, adrParent &P)
 {
-    if (Prec!=NULL) {
+    if (Prec!=NULL)
+    {
         P = nextParent(Prec);
-        if (nextParent(P) != NULL) {
+        if (nextParent(P) != NULL)
+        {
             nextParent(Prec) = nextParent(P);
             prevParent(nextParent(P)) = Prec;
             prevParent(P) = NULL;
             nextParent(P) = NULL;
-        } else {
+        }
+        else
+        {
             deleteLastPar(L, P);
         }
     }
@@ -99,12 +111,16 @@ void deleteAfterPar (ListParent &L, adrParent Prec, adrParent &P)
 
 void deleteLastPar (ListParent &L, adrParent &P)
 {
-    if (firstParent(L)!=NULL) {
+    if (firstParent(L)!=NULL)
+    {
         P = lastParent(L);
-        if (firstParent(L) == lastParent(L)) {
+        if (firstParent(L) == lastParent(L))
+        {
             firstParent(L) = NULL;
             lastParent(L) = NULL;
-        } else {
+        }
+        else
+        {
             lastParent(L) = prevParent(P);
             nextParent(lastParent(L)) = NULL;
             prevParent(P) = NULL;

@@ -15,14 +15,16 @@ using namespace std;
 
 typedef struct elmChild *adrChild;
 
-struct elmChild{
+struct elmChild
+{
     string IDChild;
     string maskapai;
     adrChild nextChild;
     adrChild prevChild;
 };
 
-struct ListChild{
+struct ListChild
+{
     adrChild firstChild;
     adrChild lastChild;
 };

@@ -18,7 +18,8 @@ using namespace std;
 
 typedef struct elmParent *adrParent;
 
-struct elmParent{
+struct elmParent
+{
     string IDParent;
     string tujuan;
     ListRelation childList;
@@ -26,7 +27,8 @@ struct elmParent{
     adrParent prevParent;
 };
 
-struct ListParent{
+struct ListParent
+{
     adrParent firstParent;
     adrParent lastParent;
 };

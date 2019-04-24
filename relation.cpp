@@ -32,8 +32,10 @@ void deleteFirstRel (ListRelation &L, adrRelation &R)
     nextRelation(R) = NULL;
 }
 
-void deleteAfterRel (ListRelation &L, adrRelation Prec, adrRelation &R){
-    if (Prec!=NULL && nextRelation(Prec)!=NULL) {
+void deleteAfterRel (ListRelation &L, adrRelation Prec, adrRelation &R)
+{
+    if (Prec!=NULL && nextRelation(Prec)!=NULL)
+    {
         R = nextRelation(Prec);
         nextRelation(Prec) = nextRelation(R);
         nextRelation(R) = NULL;

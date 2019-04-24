@@ -18,11 +18,11 @@ int main()
     insertLastCh(L1, allocateCh("Emirates","77"));
     printChild(L1);
     adrChild C;
-    deleteFirstCh(L1,C);
+    /*deleteFirstCh(L1,C);
     deleteLastCh(L1,C);
     adrChild Prec = searchChild(L1,"3");
     deleteAfterCh(L1, Prec, C);
-    printChild(L1);
+    printChild(L1);*/
     cout << endl;
     ListParent L2;
     createListPar(L2);
@@ -32,11 +32,15 @@ int main()
     insertLastPar(L2, allocatePar("Bali","100"));
     printParent(L2);
     adrParent P;
-    deleteFirstPar(L2,P);
+    /*deleteFirstPar(L2,P);
     deleteLastPar(L2,P);
     adrParent PrecP = searchParent(L2,"22");
     deleteAfterPar(L2,PrecP,P);
-    printParent(L2);
+    printParent(L2);*/
+    P = searchParent(L2,"45");
+    C = searchChild(L1,"9");
+    adrRelation R = allocateRel(C);
+    insertRel(child(P), R);
     /// :o
     return 0;
 }
