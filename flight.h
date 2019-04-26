@@ -17,7 +17,7 @@ void connect (ListParent &P, ListChild C, string IDP, string IDC);
 adrRelation checkConnection (ListParent P, ListChild C, string IDP, string IDC); // not sure
 void disconnect (ListParent &P, ListChild C, string IDP, string IDC);
 void printAll (ListParent P, ListChild C);
-void printChildOfParent (ListParent P, ListChild C);
+void printChildOfParent (ListParent P, ListChild C, string IDP);
 void deleteChild (ListParent &P, ListChild &C);
 void deleteParent (ListParent $L);
 

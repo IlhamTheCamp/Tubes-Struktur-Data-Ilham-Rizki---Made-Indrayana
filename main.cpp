@@ -5,6 +5,9 @@
 #include "relation.h"
 
 using namespace std;
+adrChild C;
+adrParent P;
+adrRelation R;
 
 int main()
 {
@@ -17,7 +20,6 @@ int main()
     insertAfterCh(L1, searchChild(L1,"3"), allocateCh("KLM","88"));
     insertLastCh(L1, allocateCh("Emirates","77"));
     printChild(L1);
-    adrChild C;
     /*deleteFirstCh(L1,C);
     deleteLastCh(L1,C);
     adrChild Prec = searchChild(L1,"3");
@@ -31,13 +33,12 @@ int main()
     insertAfterPar(L2, searchParent(L2,"22"), allocatePar("London","99"));
     insertLastPar(L2, allocatePar("Bali","100"));
     printParent(L2);
-    adrParent P;
     /*deleteFirstPar(L2,P);
     deleteLastPar(L2,P);
     adrParent PrecP = searchParent(L2,"22");
     deleteAfterPar(L2,PrecP,P);
     printParent(L2);*/
-    connect(L2, L1, "22", "77");
+    /*connect(L2, L1, "22", "77");
     connect(L2, L1, "100", "77");
     connect(L2, L1, "100", "9");
     connect(L2, L1, "99", "3");
@@ -49,7 +50,12 @@ int main()
     connect(L2, L1, "1", "9");      //Error Testing
     printAll(L2, L1);
     disconnect(L2, L1, "99", "77");
-    printAll(L2, L1);
+    printAll(L2, L1);*/
+    connect(L2,L1,"99","9");
+    ListRelation L3;
+    insertRel(L3,allocateRel(searchChild(L1,"9")));
+    printChildOfParent(L2,L1,"9");
+    //insertRel(child(P), R);
     /// :o
     return 0;
 }

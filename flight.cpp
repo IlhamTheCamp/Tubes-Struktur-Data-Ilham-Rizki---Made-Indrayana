@@ -115,3 +115,25 @@ void printAll (ListParent P, ListChild C)
     }
     cout << endl;
 }
+
+void printChildOfParent (ListParent P, ListChild C, string IDP)
+{
+    adrParent Q = searchParent(P,IDP);
+    if (Q != NULL)
+    {
+        cout << "Child dari Parent " << tujuan(Q) << " (" << IDP << ") adalah : " << endl;
+        adrRelation R = firstRelation(childList(Q));
+        if (R==NULL)
+        {
+            cout << " KOSONG " << endl;
+        }
+        else
+        {
+            while (R != NULL)
+            {
+                cout << maskapai(child(R)) << " -> ";
+                R = nextRelation(R);
+            }
+        }
+    }
+}
