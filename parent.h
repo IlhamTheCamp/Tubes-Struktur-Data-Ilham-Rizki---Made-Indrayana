@@ -20,7 +20,7 @@ typedef struct elmParent *adrParent;
 
 struct elmParent
 {
-    string IDParent;
+    int IDParent;
     string tujuan;
     ListRelation childList;
     adrParent nextParent;
@@ -34,7 +34,7 @@ struct ListParent
 };
 
 void createListPar (ListParent &L);
-adrParent allocatePar (string tujuan, string IDParent);
+adrParent allocatePar (string tujuan, int IDParent);
 void deallocatePar (adrParent &P);
 void insertFirstPar (ListParent &L, adrParent P);
 void insertAfterPar (ListParent &L, adrParent Prec, adrParent P);
@@ -42,6 +42,6 @@ void insertLastPar (ListParent &L, adrParent P);
 void deleteFirstPar (ListParent &L, adrParent &P);
 void deleteAfterPar (ListParent &L, adrParent Prec, adrParent &P);
 void deleteLastPar (ListParent &L, adrParent &P);
-adrParent searchParent (ListParent L, string IDP);
+adrParent searchParent (ListParent L, int IDP);
 
 #endif // PARENT_H_INCLUDED

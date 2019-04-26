@@ -28,10 +28,21 @@ int main()
     cout << endl;
     ListParent L2;
     createListPar(L2);
-    insertFirstPar(L2, allocatePar("Tokyo","22"));
+    /*insertFirstPar(L2, allocatePar("Tokyo","22"));
     insertFirstPar(L2, allocatePar("Jakarta","45"));
     insertAfterPar(L2, searchParent(L2,"22"), allocatePar("London","99"));
     insertLastPar(L2, allocatePar("Bali","100"));
+    printParent(L2);*/
+    cout << "ID 22 Tuj TOKYO" << endl;
+    insertParent(L2);
+    cout << "ID 99 Tuj LONDON" << endl;
+    insertParent(L2);
+    cout << "ID 45 Tuj JAKARTA" << endl;
+    insertParent(L2);
+    cout << "ID 100 Tuj BALI" << endl;
+    insertParent(L2);
+    cout << "ID 100 Tuj BALI" << endl;
+    insertParent(L2);
     printParent(L2);
     /*deleteFirstPar(L2,P);
     deleteLastPar(L2,P);
@@ -51,10 +62,10 @@ int main()
     printAll(L2, L1);
     disconnect(L2, L1, "99", "77");
     printAll(L2, L1);*/
-    connect(L2,L1,"99","9");
+    connect(L2,L1,99,"9");
     ListRelation L3;
-    insertRel(L3,allocateRel(searchChild(L1,"9")));
-    printChildOfParent(L2,L1,"9");
+    insertRel(L3,allocateRel(searchChild(L1,"99")));
+    printChildOfParent(L2,L1,99);
     //insertRel(child(P), R);
     /// :o
     return 0;

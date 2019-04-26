@@ -7,7 +7,7 @@ void createListPar (ListParent &L)
     lastParent(L) = NULL;
 }
 
-adrParent allocatePar (string tujuan, string IDParent)
+adrParent allocatePar (string tujuan, int IDParent)
 {
     adrParent P = new elmParent;
     tujuan(P) = tujuan;
@@ -128,7 +128,7 @@ void deleteLastPar (ListParent &L, adrParent &P)
     }
 }
 
-adrParent searchParent (ListParent L, string IDP)
+adrParent searchParent (ListParent L, int IDP)
 {
     adrParent P = firstParent(L);
     while (P != NULL && IDP != IDParent(P))

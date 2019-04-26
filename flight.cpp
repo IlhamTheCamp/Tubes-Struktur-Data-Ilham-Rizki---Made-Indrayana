@@ -1,5 +1,38 @@
 #include "flight.h"
 /// add later just in case we wanna change it
+
+void insertParent (ListParent &L){
+    int ID;
+    string Tujuan;
+    cout << "ID     :";
+    cin >> ID;
+    cout << "Tujuan :";
+    cin >> Tujuan;
+    adrParent P = allocatePar(Tujuan, ID);
+    if (searchParent(L, ID)==NULL){
+        if ((firstParent(L)==NULL)||(IDParent(P)<IDParent(firstParent(L)))) {
+            insertFirstPar(L, P);
+            cout << "a ";
+        } else if (IDParent(P)>IDParent(lastParent(L))) {
+            insertLastPar(L, P);
+            cout << "b ";
+        } else {
+            adrParent Q = firstParent(L);
+            while (IDParent(nextParent(Q))<IDParent(P)) {
+                Q = nextParent(Q);
+                cout << "nye ";
+            }
+            insertAfterPar(L, Q, P);
+            cout << "c ";
+        }
+        cout << "Success" << endl;
+    } else {
+        deallocatePar(P);
+        cout << "Nope" << endl;
+    }
+
+}
+
 void printParent (ListParent L)
 {
     if (firstParent(L) != NULL)
@@ -36,7 +69,7 @@ void printChild(ListChild L)
     }
 }
 
-void connect (ListParent &P, ListChild C, string IDP, string IDC)
+void connect (ListParent &P, ListChild C, int IDP, string IDC)
 {
     adrParent Par = searchParent(P, IDP);
     adrChild Chi = searchChild(C, IDC);
@@ -47,7 +80,7 @@ void connect (ListParent &P, ListChild C, string IDP, string IDC)
     }
 }
 
-adrRelation checkConnection (ListParent P, ListChild C, string IDP, string IDC)
+adrRelation checkConnection (ListParent P, ListChild C, int IDP, string IDC)
 {
     adrParent Par = searchParent(P, IDP);
     adrChild Chi = searchChild(C, IDC);
@@ -66,7 +99,7 @@ adrRelation checkConnection (ListParent P, ListChild C, string IDP, string IDC)
     return NULL;
 }
 
-void disconnect (ListParent &P, ListChild C, string IDP, string IDC)
+void disconnect (ListParent &P, ListChild C, int IDP, string IDC)
 {
     adrParent Par = searchParent(P, IDP);
     adrChild Chi = searchChild(C, IDC);
@@ -116,7 +149,7 @@ void printAll (ListParent P, ListChild C)
     cout << endl;
 }
 
-void printChildOfParent (ListParent P, ListChild C, string IDP)
+void printChildOfParent (ListParent P, ListChild C, int IDP)
 {
     adrParent Q = searchParent(P,IDP);
     if (Q != NULL)
@@ -125,13 +158,13 @@ void printChildOfParent (ListParent P, ListChild C, string IDP)
         adrRelation R = firstRelation(childList(Q));
         if (R==NULL)
         {
-            cout << " KOSONG " << endl;
+            cout << " [Empty] " << endl;
         }
         else
         {
             while (R != NULL)
             {
-                cout << maskapai(child(R)) << " -> ";
+                cout << " -> " << maskapai(child(R)) << endl;
                 R = nextRelation(R);
             }
         }
