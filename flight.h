@@ -14,7 +14,7 @@ void printParent (ListParent L);
 void insertChild (ListChild &L);
 void printChild (ListChild L);
 void connect (ListParent &P, ListChild C, int IDP, int IDC);
-bool checkConnection (ListParent P, ListChild C, int IDP, int IDC); // not sure
+bool checkConnection (ListParent P, ListChild C, int IDP, int IDC);
 void disconnect (ListParent &P, ListChild C, int IDP, int IDC);
 void printAll (ListParent P, ListChild C);
 void printChildOfParent (ListParent P, ListChild C, int IDP);

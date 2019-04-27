@@ -71,8 +71,7 @@ int main()
     disconnect(L2, L1, "99", "77");
     printAll(L2, L1);*/
     connect(L2,L1,99,9);
-    ListRelation L3;
-    insertRel(L3,allocateRel(searchChild(L1,99)));
+    printChildOfParent(L2,L1,99);
     printChildOfParent(L2,L1,45);
     cout << "Apakah ke London bisa dengan Garuda Indonesia?" << endl;
     cout << checkConnection(L2,L1,99,9);

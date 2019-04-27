@@ -6,8 +6,9 @@ void insertParent (ListParent &L){
     string Tujuan;
     cout << "ID     : ";
     cin >> ID;
+    cin.ignore();
     cout << "Tujuan : ";
-    cin >> Tujuan;
+    getline(cin, Tujuan);
     adrParent P = allocatePar(Tujuan, ID);
     if (searchParent(L, ID)==NULL){
         if ((firstParent(L)==NULL)||(IDParent(P)<IDParent(firstParent(L)))) {
@@ -57,8 +58,9 @@ void insertChild (ListChild &L)
     string Maskapai;
     cout << "ID : ";
     cin >> IDanak;
+    cin.ignore();
     cout << "Maskapai : ";
-    cin >> Maskapai;
+    getline(cin, Maskapai);
     adrChild C = allocateCh(Maskapai, IDanak);
     if (searchChild(L, IDanak)==NULL){
         if ((firstChild(L)==NULL)||(IDChild(C)<IDChild(firstChild(L)))) {
@@ -202,3 +204,36 @@ void printChildOfParent (ListParent P, ListChild C, int IDP)
         }
     }
 }
+
+void deleteChild (ListParent &P, ListChild &C){
+    int ID;
+    cout << "ID : ";
+    cin >> ID;
+    adrChild PrevC, Chi = searchChild(C, ID);
+    if (Chi!=NULL) {
+        adrParent Par = firstParent(P);
+        while (Par!=NULL) {
+            adrRelation temp, Rel = firstRelation(childList(Par));
+            while (Rel!=NULL) {
+                if (child(Rel) == Chi) {
+                    Rel = nextRelation(Rel);
+                    deleteFirstRel(childList(Par), temp);
+                    deallocateRel(temp);
+                } else if (nextRelation(Rel)!=NULL&&child(nextRelation(Rel)) == Chi) {
+                    deleteAfterRel(childList(Par),Rel, temp);
+                    deallocateRel(temp);
+                } else {
+                    Rel = nextRelation(Rel);
+                }
+            }
+            Par = nextParent(Par);
+        }
+        if (Chi==firstChild(C)) {
+            deleteFirstCh(C, Chi);
+        } else {
+            PrevC = prevChild(Chi);
+            deleteAfterCh(C, PrevC, Chi);
+        }
+        deallocateCh(Chi);
+    }
+};
