@@ -15,10 +15,18 @@ int main()
 
     ListChild L1;
     createListCh(L1);
-    insertFirstCh(L1, allocateCh("Singapore Airlines","3"));
-    insertFirstCh(L1, allocateCh("Garuda Indonesia","9"));
-    insertAfterCh(L1, searchChild(L1,"3"), allocateCh("KLM","88"));
-    insertLastCh(L1, allocateCh("Emirates","77"));
+    /*insertFirstCh(L1, allocateCh("Singapore Airlines",3));
+    insertFirstCh(L1, allocateCh("Garuda Indonesia",9));
+    insertAfterCh(L1, searchChild(L1,3), allocateCh("KLM",88));
+    insertLastCh(L1, allocateCh("Emirates",77));*/
+    cout << "ID 3 Singapore Airlines" << endl;
+    insertChild(L1);
+    cout << "ID 9 Garuda Indonesia" << endl;
+    insertChild(L1);
+    cout << "ID 88 KLM" << endl;
+    insertChild(L1);
+    cout << "ID 77 Emirates" << endl;
+    insertChild(L1);
     printChild(L1);
     /*deleteFirstCh(L1,C);
     deleteLastCh(L1,C);
@@ -62,10 +70,12 @@ int main()
     printAll(L2, L1);
     disconnect(L2, L1, "99", "77");
     printAll(L2, L1);*/
-    connect(L2,L1,99,"9");
+    connect(L2,L1,99,9);
     ListRelation L3;
-    insertRel(L3,allocateRel(searchChild(L1,"99")));
-    printChildOfParent(L2,L1,99);
+    insertRel(L3,allocateRel(searchChild(L1,99)));
+    printChildOfParent(L2,L1,45);
+    cout << "Apakah ke London bisa dengan Garuda Indonesia?" << endl;
+    cout << checkConnection(L2,L1,99,9);
     //insertRel(child(P), R);
     /// :o
     return 0;

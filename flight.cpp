@@ -4,9 +4,9 @@
 void insertParent (ListParent &L){
     int ID;
     string Tujuan;
-    cout << "ID     :";
+    cout << "ID     : ";
     cin >> ID;
-    cout << "Tujuan :";
+    cout << "Tujuan : ";
     cin >> Tujuan;
     adrParent P = allocatePar(Tujuan, ID);
     if (searchParent(L, ID)==NULL){
@@ -51,6 +51,38 @@ void printParent (ListParent L)
     }
 }
 
+void insertChild (ListChild &L)
+{
+    int IDanak;
+    string Maskapai;
+    cout << "ID : ";
+    cin >> IDanak;
+    cout << "Maskapai : ";
+    cin >> Maskapai;
+    adrChild C = allocateCh(Maskapai, IDanak);
+    if (searchChild(L, IDanak)==NULL){
+        if ((firstChild(L)==NULL)||(IDChild(C)<IDChild(firstChild(L)))) {
+            insertFirstCh(L, C);
+            cout << "a ";
+        } else if (IDChild(C)>IDChild(lastChild(L))) {
+            insertLastCh(L, C);
+            cout << "b ";
+        } else {
+            adrChild Q = firstChild(L);
+            while (IDChild(nextChild(Q))<IDChild(C)) {
+                Q = nextChild(Q);
+                cout << "nye ";
+            }
+            insertAfterCh(L, Q, C);
+            cout << "c ";
+        }
+        cout << "Success" << endl;
+    } else {
+        deallocateCh(C);
+        cout << "Nope" << endl;
+    }
+}
+
 void printChild(ListChild L)
 {
     if (firstChild(L) != NULL)
@@ -69,7 +101,7 @@ void printChild(ListChild L)
     }
 }
 
-void connect (ListParent &P, ListChild C, int IDP, string IDC)
+void connect (ListParent &P, ListChild C, int IDP, int IDC)
 {
     adrParent Par = searchParent(P, IDP);
     adrChild Chi = searchChild(C, IDC);
@@ -80,7 +112,7 @@ void connect (ListParent &P, ListChild C, int IDP, string IDC)
     }
 }
 
-adrRelation checkConnection (ListParent P, ListChild C, int IDP, string IDC)
+bool checkConnection (ListParent P, ListChild C, int IDP, int IDC)
 {
     adrParent Par = searchParent(P, IDP);
     adrChild Chi = searchChild(C, IDC);
@@ -91,15 +123,15 @@ adrRelation checkConnection (ListParent P, ListChild C, int IDP, string IDC)
         {
             if (Chi == child(R))
             {
-                return R;
+                return true;
             }
             R = nextRelation(R);
         }
     }
-    return NULL;
+    return false;
 }
 
-void disconnect (ListParent &P, ListChild C, int IDP, string IDC)
+void disconnect (ListParent &P, ListChild C, int IDP, int IDC)
 {
     adrParent Par = searchParent(P, IDP);
     adrChild Chi = searchChild(C, IDC);

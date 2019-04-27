@@ -11,11 +11,11 @@ using namespace std;
 
 void insertParent (ListParent &L);
 void printParent (ListParent L);
-void insertChild (ListParent &L);
+void insertChild (ListChild &L);
 void printChild (ListChild L);
-void connect (ListParent &P, ListChild C, int IDP, string IDC);
-adrRelation checkConnection (ListParent P, ListChild C, int IDP, string IDC); // not sure
-void disconnect (ListParent &P, ListChild C, int IDP, string IDC);
+void connect (ListParent &P, ListChild C, int IDP, int IDC);
+bool checkConnection (ListParent P, ListChild C, int IDP, int IDC); // not sure
+void disconnect (ListParent &P, ListChild C, int IDP, int IDC);
 void printAll (ListParent P, ListChild C);
 void printChildOfParent (ListParent P, ListChild C, int IDP);
 void deleteChild (ListParent &P, ListChild &C);

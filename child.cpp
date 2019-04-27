@@ -6,7 +6,7 @@ void createListCh (ListChild &L)
     lastChild(L) = NULL;
 }
 
-adrChild allocateCh (string maskapai, string IDChild)
+adrChild allocateCh (string maskapai, int IDChild)
 {
     adrChild C = new elmChild;
     maskapai(C) = maskapai;
@@ -126,7 +126,7 @@ void deleteLastCh (ListChild &L, adrChild &C)
     }
 }
 
-adrChild searchChild (ListChild L, string IDC)
+adrChild searchChild (ListChild L, int IDC)
 {
     adrChild C = firstChild(L);
     while (C != NULL && IDC != IDChild(C) )
