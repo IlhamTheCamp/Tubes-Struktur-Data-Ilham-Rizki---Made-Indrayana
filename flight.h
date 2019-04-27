@@ -19,6 +19,6 @@ void disconnect (ListParent &P, ListChild C, int IDP, int IDC);
 void printAll (ListParent P, ListChild C);
 void printChildOfParent (ListParent P, ListChild C, int IDP);
 void deleteChild (ListParent &P, ListChild &C);
-void deleteParent (ListParent $L);
+void deleteParent (ListParent &P);
 
 #endif // FLIGHT_H_INCLUDED

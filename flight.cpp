@@ -230,10 +230,48 @@ void deleteChild (ListParent &P, ListChild &C){
         }
         if (Chi==firstChild(C)) {
             deleteFirstCh(C, Chi);
-        } else {
+        }
+        else if (Chi == lastChild(C))
+        {
+            deleteLastCh(C, Chi);
+        }
+        else {
             PrevC = prevChild(Chi);
             deleteAfterCh(C, PrevC, Chi);
         }
         deallocateCh(Chi);
     }
 };
+
+void deleteParent(ListParent &P)
+{
+    int ID;
+    cout << "ID : ";
+    cin >> ID;
+    adrParent Par = searchParent(P, ID);
+    if (Par != NULL)
+    {
+        adrRelation temp, Rel = firstRelation(childList(Par));
+        while (Rel != NULL)
+        {
+            temp = Rel;
+            Rel = nextRelation(Rel);
+            deleteFirstRel(childList(Par),temp);
+            deallocateRel(temp);
+        }
+        if (Par == firstParent(P))
+        {
+            deleteFirstPar(P,Par);
+        }
+        else if (Par == lastParent(P))
+        {
+            deleteLastPar(P,Par);
+        }
+        else
+        {
+            adrParent PrevP = prevParent(Par);
+            deleteAfterPar(P, PrevP, Par);
+        }
+        deallocatePar(Par);
+    }
+}
