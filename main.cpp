@@ -50,6 +50,7 @@ void displayMenu()
     cout << "9.  Delete Destination" << endl;
     cout << "10. Count Total Available Flight Route" << endl;
     cout << "11. View Route With The Biggest Discount" << endl;
+    cout << "12. View Airlines By Routes" << endl;
     cout << "0.  Exit" << endl;
     cout << "=============================================" << endl;
     cout << "Option : ";
@@ -123,6 +124,7 @@ void runMenu (int menu)
         cin >> delIDP;
         disconnect(Destination, Airlines, delIDP, delIDC);
         cout << "=============================================" << endl << flush;
+        system("PAUSE");
         break;
     case 8 :
         cout << "=============================================" << endl;
@@ -156,15 +158,26 @@ void runMenu (int menu)
         cout << "ID : ";
         cin >> IDP;
         P = searchParent(Destination, IDP);
-        if (P!=NULL) {
-            cout << "Destination Doesn't Exist!";
+        if (P==NULL) {
+            cout << "Destination Doesn't Exist!" << endl;
         } else if (firstRelation(childList(P))==NULL) {
-            cout << "No Routes Exist in That Destination!";
+            cout << "No Routes Exist in That Destination!" << endl;
         } else {
             adrRelation Route = biggestPromo(Destination, Airlines, IDP);
             cout << "Airlines With The Biggest Discount is :" << endl;
-            cout << IDChild(child(Route)) << "\t" << maskapai(child(Route)) << " With a Discount of " << diskon(child(Route)) << " %" << endl;
+            cout << IDChild(child(Route)) << " " << maskapai(child(Route)) << " With a Discount of " << diskon(child(Route)) << " %" << endl;
         }
+        cout << "=============================================" << endl << flush;
+        system("PAUSE");
+        break;
+    case 12 :
+        cout << "=============================================" << endl;
+        cout << "         Please Insert Destination ID" << endl;
+        cout << "=============================================" << endl;
+        int IDPar;
+        cout << "ID : ";
+        cin >> IDPar;
+        printChildOfParent(Destination, Airlines, IDPar);
         cout << "=============================================" << endl << flush;
         system("PAUSE");
         break;

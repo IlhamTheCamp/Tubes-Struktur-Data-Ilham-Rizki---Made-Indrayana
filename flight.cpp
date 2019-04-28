@@ -4,7 +4,7 @@
 void insertParent (ListParent &L){
     int ID;
     string Tujuan;
-    cout << "ID     : ";
+    cout << "ID : ";
     cin >> ID;
     cin.ignore();
     cout << "Destination : ";
@@ -37,7 +37,7 @@ void printParent (ListParent L)
         adrParent P = firstParent(L);
         while (P != NULL)
         {
-            cout << IDParent(P) << "\t" << tujuan(P) << endl;
+            cout << IDParent(P) << ") " << tujuan(P) << endl;
             P = nextParent(P);
         }
     }
@@ -86,7 +86,7 @@ void printChild(ListChild L)
         adrChild C = firstChild(L);
         while (C != NULL)
         {
-            cout << IDChild(C) << "\t" << maskapai(C) << endl;
+            cout << IDChild(C) << ") " << maskapai(C) << endl;
             C = nextChild(C);
         }
     }
@@ -171,7 +171,7 @@ void printAll (ListParent P, ListChild C)
     adrRelation R;
     while (Q!=NULL)
     {
-        cout << IDParent(Q) << "\t" << tujuan(Q) << " :" << endl;
+        cout << IDParent(Q) << ") " << tujuan(Q) << " :" << endl;
         R = firstRelation(childList(Q));
         if (R==NULL)
         {
@@ -181,7 +181,7 @@ void printAll (ListParent P, ListChild C)
         {
             while (R!=NULL)
             {
-                cout << " -> " << IDChild(child(R)) << "\t" << maskapai(child(R)) << endl;
+                cout << " -> " << IDChild(child(R)) << ") " << maskapai(child(R)) << endl;
                 R = nextRelation(R);
             }
         }
@@ -229,6 +229,8 @@ void printChildOfParent (ListParent P, ListChild C, int IDP)
                 R = nextRelation(R);
             }
         }
+    } else {
+        cout << "Failed! Destination Doesn't Exist!" << endl;
     }
 }
 
