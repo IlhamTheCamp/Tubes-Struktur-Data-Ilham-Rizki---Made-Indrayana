@@ -7,29 +7,25 @@ void insertParent (ListParent &L){
     cout << "ID     : ";
     cin >> ID;
     cin.ignore();
-    cout << "Tujuan : ";
+    cout << "Destination : ";
     getline(cin, Tujuan);
     adrParent P = allocatePar(Tujuan, ID);
     if (searchParent(L, ID)==NULL){
         if ((firstParent(L)==NULL)||(IDParent(P)<IDParent(firstParent(L)))) {
             insertFirstPar(L, P);
-            cout << "a ";
         } else if (IDParent(P)>IDParent(lastParent(L))) {
             insertLastPar(L, P);
-            cout << "b ";
         } else {
             adrParent Q = firstParent(L);
             while (IDParent(nextParent(Q))<IDParent(P)) {
                 Q = nextParent(Q);
-                cout << "nye ";
             }
             insertAfterPar(L, Q, P);
-            cout << "c ";
         }
-        cout << "Success" << endl;
+        cout << "Successfully Inserted!" << endl;
     } else {
         deallocatePar(P);
-        cout << "Nope" << endl;
+        cout << "Failed! ID Already Exist!" << endl;
     }
 
 }
@@ -41,14 +37,13 @@ void printParent (ListParent L)
         adrParent P = firstParent(L);
         while (P != NULL)
         {
-            cout << tujuan(P) << " - ";
+            cout << IDParent(P) << "\t" << tujuan(P) << endl;
             P = nextParent(P);
         }
-        cout << "done" << endl; //Remove done when finished
     }
     else
     {
-        cout << "nope" << endl; //Remove later
+        cout << "[Empty]" << endl;
     }
 }
 
@@ -60,31 +55,27 @@ void insertChild (ListChild &L)
     cout << "ID : ";
     cin >> IDanak;
     cin.ignore();
-    cout << "Maskapai : ";
+    cout << "Airlines : ";
     getline(cin, Maskapai);
-    cout << "Besar Diskon (%) : ";
+    cout << "Discount (%) : ";
     cin >> diskonPromo;
     adrChild C = allocateCh(Maskapai, IDanak, diskonPromo);
     if (searchChild(L, IDanak)==NULL){
         if ((firstChild(L)==NULL)||(IDChild(C)<IDChild(firstChild(L)))) {
             insertFirstCh(L, C);
-            cout << "a ";
         } else if (IDChild(C)>IDChild(lastChild(L))) {
             insertLastCh(L, C);
-            cout << "b ";
         } else {
             adrChild Q = firstChild(L);
             while (IDChild(nextChild(Q))<IDChild(C)) {
                 Q = nextChild(Q);
-                cout << "nye ";
             }
             insertAfterCh(L, Q, C);
-            cout << "c ";
         }
-        cout << "Success" << endl;
+        cout << "Successfully Inserted!" << endl;
     } else {
         deallocateCh(C);
-        cout << "Nope" << endl;
+        cout << "Failed! ID Already Exist!" << endl;
     }
 }
 
@@ -95,14 +86,13 @@ void printChild(ListChild L)
         adrChild C = firstChild(L);
         while (C != NULL)
         {
-            cout << maskapai(C) << " - ";
+            cout << IDChild(C) << "\t" << maskapai(C) << endl;
             C = nextChild(C);
         }
-        cout << "done" << endl; //Remove done when finished
     }
     else
     {
-        cout << "nope" << endl; //Remove later
+        cout << "[Empty]" << endl; //Remove later
     }
 }
 
@@ -114,6 +104,13 @@ void connect (ListParent &P, ListChild C, int IDP, int IDC)
     {
         adrRelation R = allocateRel(Chi);
         insertRel(childList(Par), R);
+        cout << "Successfully Added!" << endl;
+    }
+    if (Par == NULL) {
+        cout << "Failed! Destination Doesn't Exist!" << endl;
+    }
+    if (Chi == NULL) {
+        cout << "Failed! Airlines Doesn't Exist!" << endl;
     }
 }
 
@@ -158,6 +155,13 @@ void disconnect (ListParent &P, ListChild C, int IDP, int IDC)
             deleteAfterRel(childList(Par), S, R);
             deallocateRel(R);
         }
+        cout << "Successfully Deleted!" << endl;
+    }
+    if (Par == NULL) {
+        cout << "Failed! Destination Doesn't Exist!" << endl;
+    }
+    if (Chi == NULL) {
+        cout << "Failed! Airlines Doesn't Exist!" << endl;
     }
 }
 
@@ -167,7 +171,7 @@ void printAll (ListParent P, ListChild C)
     adrRelation R;
     while (Q!=NULL)
     {
-        cout << tujuan(Q) << " :" << endl;
+        cout << IDParent(Q) << "\t" << tujuan(Q) << " :" << endl;
         R = firstRelation(childList(Q));
         if (R==NULL)
         {
@@ -177,7 +181,7 @@ void printAll (ListParent P, ListChild C)
         {
             while (R!=NULL)
             {
-                cout << " -> " << maskapai(child(R)) << endl;
+                cout << " -> " << IDChild(child(R)) << "\t" << maskapai(child(R)) << endl;
                 R = nextRelation(R);
             }
         }
@@ -211,7 +215,7 @@ void printChildOfParent (ListParent P, ListChild C, int IDP)
     adrParent Q = searchParent(P,IDP);
     if (Q != NULL)
     {
-        cout << "Child dari Parent " << tujuan(Q) << " (" << IDP << ") adalah : " << endl;
+        cout << "Airlines leaving for " << tujuan(Q) << " (" << IDP << ") are : " << endl;
         adrRelation R = firstRelation(childList(Q));
         if (R==NULL)
         {
@@ -263,6 +267,9 @@ void deleteChild (ListParent &P, ListChild &C){
             deleteAfterCh(C, PrevC, Chi);
         }
         deallocateCh(Chi);
+        cout << "Successfully Deleted!" << endl;
+    } else {
+        cout << "Failed! Airlines Doesn't Exist!" << endl;
     }
 };
 
@@ -296,6 +303,9 @@ void deleteParent(ListParent &P)
             deleteAfterPar(P, PrevP, Par);
         }
         deallocatePar(Par);
+        cout << "Successfully Deleted!" << endl;
+    } else {
+        cout << "Failed! Destination Doesn't Exist!" << endl;
     }
 }
 
