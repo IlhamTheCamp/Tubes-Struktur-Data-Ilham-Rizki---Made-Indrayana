@@ -6,6 +6,7 @@
 
 #define IDChild(C) C->IDChild
 #define maskapai(C) C->maskapai
+#define diskon(C) C->diskon
 #define nextChild(C) C->nextChild
 #define prevChild(C) C->prevChild
 #define firstChild(L) L.firstChild
@@ -19,6 +20,7 @@ struct elmChild
 {
     int IDChild;
     string maskapai;
+    int diskon;
     adrChild nextChild;
     adrChild prevChild;
 };
@@ -30,7 +32,7 @@ struct ListChild
 };
 
 void createListCh (ListChild &L);
-adrChild allocateCh (string maskapai, int IDChild);
+adrChild allocateCh (string maskapai, int IDChild, int diskon);
 void deallocateCh (adrChild &C);
 void insertFirstCh (ListChild &L, adrChild C);
 void insertAfterCh (ListChild &L, adrChild Prec, adrChild C);

@@ -15,13 +15,13 @@ int main()
 
     ListChild L1;
     createListCh(L1);
-    cout << "ID 3 Singapore Airlines" << endl;
+    cout << "ID 3 Singapore Airlines 10%" << endl;
     insertChild(L1);
-    cout << "ID 9 Garuda Indonesia" << endl;
+    cout << "ID 9 Garuda Indonesia 5%" << endl;
     insertChild(L1);
-    cout << "ID 88 KLM" << endl;
+    cout << "ID 88 KLM 50%" << endl;
     insertChild(L1);
-    cout << "ID 77 Emirates" << endl;
+    cout << "ID 77 Emirates 60%" << endl;
     insertChild(L1);
     printChild(L1);
 
@@ -54,6 +54,11 @@ int main()
 
     cout << "Apakah ke London bisa dengan Garuda Indonesia?" << endl;
     cout << checkConnection(L2,L1,99,9) << endl;
+    cout << endl;
+
+    cout << "Maskapai dengan promo terbesar ke London : " << endl;
+    cout << maskapai(child(biggestPromo(L2,L1,99))) << " dengan diskon sebesar " << diskon(child(biggestPromo(L2,L1,99))) << "%" << endl;
+    cout << endl;
 
     cout << "Hapus Child : ";
     deleteChild(L2,L1);
@@ -65,6 +70,9 @@ int main()
     deleteParent(L2);
     printParent(L2);
     printAll(L2,L1);
+    cout << endl;
+
+    cout << "Jumlah Rute Semua Maskapai : " << totalFlight(L2,L1) << " rute" << endl;
     //insertRel(child(P), R);
     /// :o
     return 0;

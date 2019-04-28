@@ -20,5 +20,7 @@ void printAll (ListParent P, ListChild C);
 void printChildOfParent (ListParent P, ListChild C, int IDP);
 void deleteChild (ListParent &P, ListChild &C);
 void deleteParent (ListParent &P);
+int totalFlight (ListParent P, ListChild C);
+adrRelation biggestPromo (ListParent P, ListChild C, int IDP);
 
 #endif // FLIGHT_H_INCLUDED

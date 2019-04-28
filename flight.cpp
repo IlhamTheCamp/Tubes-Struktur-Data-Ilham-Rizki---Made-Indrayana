@@ -56,12 +56,15 @@ void insertChild (ListChild &L)
 {
     int IDanak;
     string Maskapai;
+    int diskonPromo;
     cout << "ID : ";
     cin >> IDanak;
     cin.ignore();
     cout << "Maskapai : ";
     getline(cin, Maskapai);
-    adrChild C = allocateCh(Maskapai, IDanak);
+    cout << "Besar Diskon (%) : ";
+    cin >> diskonPromo;
+    adrChild C = allocateCh(Maskapai, IDanak, diskonPromo);
     if (searchChild(L, IDanak)==NULL){
         if ((firstChild(L)==NULL)||(IDChild(C)<IDChild(firstChild(L)))) {
             insertFirstCh(L, C);
@@ -183,6 +186,26 @@ void printAll (ListParent P, ListChild C)
     cout << endl;
 }
 
+adrRelation biggestPromo (ListParent P, ListChild C, int IDP)
+{
+    adrParent Q = searchParent(P, IDP);
+    adrRelation R, temp;
+    if (Q!=NULL)
+    {
+        temp = firstRelation(childList(Q));
+        R = nextRelation(temp);
+        while (R != NULL)
+        {
+            if (diskon(child(R)) > diskon(child(temp)))
+            {
+                temp = R;
+            }
+            R = nextRelation(R);
+        }
+    }
+    return temp;
+}
+
 void printChildOfParent (ListParent P, ListChild C, int IDP)
 {
     adrParent Q = searchParent(P,IDP);
@@ -274,4 +297,23 @@ void deleteParent(ListParent &P)
         }
         deallocatePar(Par);
     }
+}
+
+
+int totalFlight (ListParent P, ListChild C)
+{
+    adrParent Q = firstParent(P);
+    adrRelation R;
+    int jumlah = 0;
+    while (Q!=NULL)
+    {
+        R = firstRelation(childList(Q));
+        while (R!=NULL)
+        {
+            jumlah++;
+            R = nextRelation(R);
+        }
+        Q = nextParent(Q);
+    }
+    return jumlah;
 }

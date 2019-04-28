@@ -6,11 +6,12 @@ void createListCh (ListChild &L)
     lastChild(L) = NULL;
 }
 
-adrChild allocateCh (string maskapai, int IDChild)
+adrChild allocateCh (string maskapai, int IDChild, int diskon)
 {
     adrChild C = new elmChild;
     maskapai(C) = maskapai;
     IDChild(C) = IDChild;
+    diskon(C) = diskon;
     nextChild(C) = NULL;
     prevChild(C) = NULL;
     return C;
