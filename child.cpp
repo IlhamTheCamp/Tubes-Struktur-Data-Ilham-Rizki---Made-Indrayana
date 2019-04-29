@@ -1,5 +1,5 @@
 #include "child.h"
-
+// ILHAM RIZKI HIDAYAT
 void createListCh (ListChild &L)
 {
     firstChild(L) = NULL;

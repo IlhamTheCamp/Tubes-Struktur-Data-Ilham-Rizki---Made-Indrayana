@@ -1,6 +1,6 @@
 #include "parent.h"
 #include "relation.h"
-
+// MADE INDRAYANA PUTRA
 void createListPar (ListParent &L)
 {
     firstParent(L) = NULL;

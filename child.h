@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <stdlib.h>
-
+// ILHAM RIZKI HIDAYAT
 #define IDChild(C) C->IDChild
 #define maskapai(C) C->maskapai
 #define diskon(C) C->diskon

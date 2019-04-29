@@ -1,6 +1,6 @@
 #include "relation.h"
 #include "child.h"
-
+// MADE INDRAYANA PUTRA
 void createListRel (ListRelation &L)
 {
     firstRelation(L) = NULL;
